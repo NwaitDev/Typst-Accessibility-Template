@@ -6,3 +6,13 @@ Among all the arguments he talked to me about, the the most valuable one that I 
 Apparently, "What better than LaTeX to not produce an accessible document?" Unreadable, Old fashioned, lame...
 
 I wanted to prove him wrong, so I decided I would write a template to easily generate accessible documents. And since that guy managed to get me interested into this Typst thing, I also wanted to give it a try at the same time.
+
+## Requirements
+
+To use that template, you will need the Typst compiler installed on your computer.
+
+To compile the example document, open a terminal in this folder and run:
+
+```bash
+typst c ArticleTemplate.typ
+```
