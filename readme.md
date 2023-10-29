@@ -14,5 +14,5 @@ To use that template, you will need the Typst compiler installed on your compute
 To compile the example document, open a terminal in this folder and run:
 
 ```bash
-typst c ArticleTemplate.typ
+typst c article_template.typ
 ```

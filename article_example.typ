@@ -1,32 +1,25 @@
-#set math.equation(numbering: "(1)")
+#import "article_template.typ": article_template
+#import "Components/authors.typ": author
 
+#let abstractofthearticle = lorem(59)
 
-#set page(
-  paper: "a4",
-  margin: (x: 1.8cm, y: 1.5cm),
+#show: doc => article_template(
+  title: [A title for this example article],
+  subtitle:[And its associated very long subtitle that describes the subject way too precisely compared to the name of the article],
+  authors:(
+    author("F. Sinatra", "Some Jersey University", email:"example@anemail.com"),
+    author("E. K. Waymon", "North Carolina Uni", email:"example@anemail.com"),
+    author("A. Winehouse", "London College of sth")
+  ),
+  abstract: abstractofthearticle,
+  cols:2,
+  fontsize:10pt,
+  doc,
 )
 
-#set text(
-  font: "DejaVu Sans",
-  size: 12pt
-)
 
-#set par(
-  justify: true, //default value false
-  leading: 0.65em, //default value 65em
-  linebreaks: "optimized", // default value "optimized"
-  first-line-indent: 0em, //default value 0em
-  hanging-indent: 0em //default value 0em
-)
 
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-= My First Typst Document
-\
-In this report, we well see a few Typst features that may be useful to write a report.
-So what now ?
-
-== Lists in Typst
+= Lists in Typst
 \
 Let's take a look at lists.
 There are 2 kinds of lists:
@@ -41,6 +34,8 @@ But if you want to enumerate the different steps of a procedure, you may prefer 
 + Final Step
 
 Such lists are produced by preceding the items by the `+` character.
+
+== Nested lists
 It is perfectly possible to nest those lists by indenting the items in the Typst script:
 
 + A first list
@@ -50,19 +45,22 @@ It is perfectly possible to nest those lists by indenting the items in the Typst
     - one of the items of that list
     - another item of that list
 
-== Introducing image
+= Introducing images
 \
-Here is an example of a figure introduced into the document. It took a picture of one of my favorite video game: _Tranistor_ @transistor2014. The main character, Red (as shown in Figure @Red), is a singer who lost her voice after one of her concert was interrupted by a secret organization trying to murder her.
+Here is an example of a figure introduced into the document. It took a picture of one of my favorite video game: _Tranistor_ @transistor2014. The main character, Red (as shown on @Red), is a singer who lost her voice after one of her concert was interrupted by a secret organization trying to murder her.
 
 #figure(
-    image("Images/transistor_game.jpg", width :70%),
+    image(
+        "Images/transistor_game.jpg",
+        width :100%,
+        alt: "Red headed woman in modern clothes with holding a sort of glimmering sword. abstract background mixing smoke, geometrical forms and warm colours"
+    ),
     caption: [
          Red, the main character of the _Transistor_ video game
     ]
-
 )<Red>
 
-== The heart of your documents : Math
+= Doing Math
 \
 Let's jump right into it with one of my favorite equations:
 
@@ -71,7 +69,7 @@ $  (a+b)^n = sum_(k=0)^n binom(n,k) a^k times b^(n-k) $ <newtonEquation>
 The @newtonEquation is one of the most fundamental equations of algebra: Newton's Binomial Theorem.
 
 
-== Talking about code
+= Talking about code
 \
 Since I'm a computer scientist, I just cannot make an example document without putting some examples of code listing in it! So let's see what it would look like.
 \
@@ -94,10 +92,11 @@ int main(int argc, char** argv){
 }
 ```
 
-== And finally, the good old Lorem Ipsum
+= And finally, the good old Lorem Ipsum
 \
 Because without it, a template document wouldn't be a good template document...
 \
 #lorem(100)
+
 
 #bibliography("Bibliography/ArticleBibliography.bib",title: "Biblio")
